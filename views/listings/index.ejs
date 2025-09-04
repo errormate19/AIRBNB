@@ -1,19 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <form method="GET" action="/listings/new">
+<% layout("/layouts/boilerplate")%><%= success%>
+
+<!-- <form method="GET" action="/listings/new">
       <button>Create new listing</button>
-    </form>
-    <h3>All Listings</h3>
-    <ul>
+    </form> -->
+
+<h3>All Listings</h3>
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+  <% for(let listings of all_listing){ %>
+
+  <div class="card col listing-card">
+    <a href="/listings/<%=listings._id%>" class="listing-link">
+      <img
+        src="<%=listings.image.url%>"
+        class="card-img-top"
+        alt="listing_image"
+        style="height: 20rem"
+        ;
+      />
+
+      <div class="card-img-overlay">abcd</div>
+    </a>
+    <div class="card-body">
+      <p class="card-text">
+        <b><%=listings.title%></b><br />
+        &#8377; <%=listings.price.toLocaleString("en-IN")%>/night
+      </p>
+    </div>
+  </div>
+
+  <% } %>
+</div>
+
+<!-- <ul>
       <% for(let listings of all_listing){ %>
       <li><a href="/listings/<%=listings._id %>"><%= listings.title%></a></li>
+        <li><a href="/listings/<%=listings._id %>"><%= listings.title%></a></li>
       <% } %>
-    </ul>
-  </body>
-</html>
+    </ul> -->
